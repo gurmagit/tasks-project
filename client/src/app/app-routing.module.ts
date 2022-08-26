@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TaskCreateComponent } from './tasks/task-create/task-create.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
-// import { TaskDeleteComponent } from './tasks/task-delete/task-delete.component';
-
 
 const routes: Routes = [
   {
