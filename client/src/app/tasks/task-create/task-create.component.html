@@ -1,0 +1,21 @@
+<div *ngIf="isUserLoggedIn">
+  <mat-card>
+    <form (submit)="onCreateTask(taskForm)" #taskForm="ngForm">
+      <mat-form-field>
+        <input matInput type="text" ngModel name="title" #title="ngModel"
+          placeholder="Task title" required>
+        <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput rows="3" ngModel name="content" #content="ngModel"
+          placeholder="Task content" required></textarea>
+        <mat-error *ngIf="content.invalid">Please enter content</mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit">
+        Save Task
+      </button>
+    </form>
+  </mat-card>
+  <app-task-list></app-task-list>
+</div>

@@ -1,0 +1,17 @@
+.is-group {
+  display: flex;
+}
+button {
+  background-color: #c5fbff;
+  color: #052436;
+  text-align: center;
+  margin: 5px;
+  font: 19px Times;
+  font-weight: bold;
+  border: 2px solid #999;
+  border-radius: 5px;
+  float: right;
+}
+input {
+  width: 100%;
+}

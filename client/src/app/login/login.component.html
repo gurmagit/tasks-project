@@ -1,0 +1,15 @@
+<div class="flex-box">
+  <div class="comp">
+    <form (submit)="login(userForm)" #userForm="ngForm">
+      <h2><u>Login</u></h2>
+      <p><label for="username">Username</label></p>
+      <p><input type="text" ngModel name="username" #name="ngModel"
+        placeholder="enter username" required></p>
+      <p><label for="password">Password</label></p>
+      <p><input matInput type="password" ngModel name="password"
+        #password="ngModel" placeholder="password" required></p>
+      <p><button>Login</button></p>
+      <mat-error *ngIf="badCred">Wrong username or password</mat-error>
+    </form>
+  </div>
+</div>

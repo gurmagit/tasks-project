@@ -1,0 +1,18 @@
+label {
+  display: inline-block;
+  width: 160px;
+  text-align: left;
+}
+input {
+  width: 160px;
+}
+button {
+  margin: 20px 0 10px 0;
+}
+small {
+  text-align: left;
+}
+.row {
+  display: table;
+  margin: -3px auto 8px auto;
+}

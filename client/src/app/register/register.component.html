@@ -1,0 +1,29 @@
+<div class="flex-box">
+  <div class="comp">
+    <mat-card>
+      <form (submit)="register(userForm)" #userForm="ngForm">
+        <h2><u>Add new User</u></h2>
+        <mat-form-field>
+          <input matInput type="text" ngModel name="username" #username="ngModel"
+            placeholder="enter username" required>
+          <mat-error *ngIf="username.invalid">Enter a username</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" ngModel name="password" #password="ngModel"
+            placeholder="password" required>
+          <mat-error *ngIf="password.invalid">Enter password</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" ngModel name="confirm" #confirm="ngModel"
+            placeholder="confirm password" required>
+            <mat-error *ngIf="confirm.hasError('required')">Confirm password</mat-error>
+            <mat-error *ngIf="confirm.hasError('notEqual')">Password don't match</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="submit">
+          Submit
+        </button>
+      </form>
+    </mat-card>
+  </div>
+</div>

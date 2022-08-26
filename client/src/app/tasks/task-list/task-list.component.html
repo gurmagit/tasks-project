@@ -1,0 +1,14 @@
+<ng-container *ngIf="tasks.length > 0">
+  <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let task of tasks">
+      <mat-expansion-panel-header>
+        {{ task["title"] }}
+      </mat-expansion-panel-header>
+      <p>{{ task["content"] }}</p>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="editTask(task)">EDIT</button>
+        <button mat-button color="warn" (click)="deleteTask(task)">DELETE</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-container>
