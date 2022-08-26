@@ -23,11 +23,11 @@ export class NavbarComponent implements OnInit {
   ) {
     this.router.events.pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((nav: any) => {
-        if (nav['url'] !== '/') {
+        if (nav['url'] !== '/' && nav['url'] !== '/register') {
           this.greeting = 'Please ';
           this.currentRoute = nav['url'].substr(1);
           if (!this.isLoggedIn) {
-            this.router.navigate(['/'])
+            this.router.navigate(['/login'])
           }
         } else {
           this.greeting = 'Hello!';
