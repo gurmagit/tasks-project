@@ -19,7 +19,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private dialog: MatDialog
   ) {}
-  taskId: string = '';
   tasks: Task[] = [];
   tasksSub: Subscription = new Subscription;
   isUserLoggedIn = this.isLoggedInService.isAuthenticated;
@@ -34,7 +33,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.tasksSub = this.tasksService.getTaskUpdateListener()
       .subscribe((tasks: Task[]) => {
         this.tasks = tasks;
-        this.taskId = Object.values(tasks[0])[0];
       });
   }
 
