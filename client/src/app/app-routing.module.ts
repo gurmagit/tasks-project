@@ -6,10 +6,6 @@ import { TaskCreateComponent } from './tasks/task-create/task-create.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: LoginComponent
-  },
-  {
     path:'tasks',
     component: TaskCreateComponent,
   },
@@ -20,6 +16,10 @@ const routes: Routes = [
   {
     path:'register',
     component: RegisterComponent
+  },
+  {
+    path: '',
+    component: LoginComponent
   },
 ];
 
