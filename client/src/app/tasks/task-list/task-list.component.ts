@@ -44,8 +44,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   editTask(task: Task) {
     const id = Object.values(task)[0];
-    // console.log(this.tasks.find(o => Object.values(o)[0] === id));
-    // const index = this.tasks.indexOf(task);
     let dialogRef = this.dialog.open(EditTaskComponent, {
       width: '700px',
       data: task
