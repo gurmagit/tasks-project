@@ -57,17 +57,34 @@ class MongoService {
     });
   }
 
-  createTask(data) {
-    this.Tasks.create(data);
+  createTask(data, cb) {
+    this.Tasks.create(data, (err, res) => {
+      if (err) {
+        console.log('err:', err);
+      } else {
+        cb(res);
+      }
+    });
   }
 
-  updateTask(data) {
-    this.Tasks.findByIdAndUpdate(data.id, {content: data.content});
+  updateTask(data, cb) {
+    this.Tasks.findByIdAndUpdate(data.id, {content: data.content}, (err, res) => {
+      if (err) {
+        console.log('err:', err);
+      } else {
+        cb(res);
+      }
+    });
   }
 
-  deleteTask(data) {
-    this.Tasks.findByIdAndDelete(data.id, r => {
-      console.log('r:', r);
+  deleteTask(id, cb) {
+    const doc = {_id: mongoose.Types.ObjectId(id)};
+    this.Tasks.deleteOne(doc, (err, res) => {
+      if (err) {
+        console.log('err:', err);
+      } else {
+        cb(res);
+      }
     });
   }
 
