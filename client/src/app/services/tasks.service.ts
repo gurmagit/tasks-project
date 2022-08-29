@@ -44,8 +44,6 @@ export class TasksService {
   }
 
   createTask(data: Task) {
-    // this.tasks.push(data);
-    // this.tasksUpdated.next([...this.tasks]);
     this.http.post(url + 'tasks/create', data, this.httpOptions)
       .subscribe((res:any) => {
         console.log('res:', res);
