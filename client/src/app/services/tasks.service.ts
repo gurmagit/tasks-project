@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Task } from '../tasks/task.model';
 import { IsLoggedInService } from './is-logged-in.service';
+import { UsersService } from './users.service';
 
 const url = 'http://localhost:3030/';
 
@@ -12,6 +13,7 @@ export class TasksService {
   constructor(
     private isLoggedInService: IsLoggedInService,
     private http: HttpClient,
+    private usersService: UsersService
   ){}
 
   token = this.isLoggedInService.getToken();
@@ -42,10 +44,15 @@ export class TasksService {
   }
 
   createTask(data: Task) {
-    this.tasks.push(data);
-    this.tasksUpdated.next([...this.tasks]);
+    // this.tasks.push(data);
+    // this.tasksUpdated.next([...this.tasks]);
     this.http.post(url + 'tasks/create', data, this.httpOptions)
-      .subscribe((res:any) => {});
+      .subscribe((res:any) => {
+        console.log('res:', res);
+        this.tasks.push(data);
+        this.tasksUpdated.next([...this.tasks]);
+        this.fetchTasks(this.usersService.getUser().username);
+      });
   }
 
   updateTask(id: string, content: string) {
@@ -57,7 +64,10 @@ export class TasksService {
 
   deleteTask(id: string) {
     const data = {id};
+    console.log('data:', data);
     this.http.post(url + 'tasks/delete', data, this.httpOptions)
-      .subscribe((res:any) => {});
+      .subscribe((res:any) => {
+        console.log('res:', res.response.deletedCount);
+      });
   }
 }
