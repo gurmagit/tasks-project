@@ -5,17 +5,28 @@ class TaskController {
 
   createTask(req, res) {
     console.log('create:', req.body);
-    mongoService.createTask(req.body);
+    mongoService.createTask(req.body, r => {
+      console.log('create response:', r);
+      res.json({'response': r})
+    });
   }
 
   updateTask(req, res) {
     console.log('update:', req.body);
-    mongoService.updateTask(req.body);
+    mongoService.updateTask(req.body, r => {
+      res.json({'response': r})
+    });
   }
 
   deleteTask(req, res) {
     console.log('delete:', req.body);
-    mongoService.deleteTask(req.body.id);
+    mongoService.deleteTask(req.body.id, r => {
+      if (r) {
+        res.json({'response': r})
+      } else {
+        res.json({'response': {deletedCount: 0}})
+      }
+    });
   }
 
   taskList(req, res) {
